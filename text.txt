@@ -1,1 +1,10 @@
 npm install react-native-swiper //for swiper
+
+npx expo install react-dom react-native-web @expo/metro-runtime
+
+
+npm install @clerk/clerk-expo
+
+npm install react-native-modal
+
+npm install expo-local-authentication
