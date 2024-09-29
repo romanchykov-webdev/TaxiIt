@@ -11,3 +11,6 @@ npm install @clerk/clerk-expo
 npm install react-native-modal
 
 npm install expo-local-authentication
+
+database
+npm install @neondatabase/serverless
