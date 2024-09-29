@@ -14,6 +14,7 @@ import { Link, router } from "expo-router";
 import OAuth from "@/components/OAuth";
 import { useSignUp } from "@clerk/clerk-expo";
 import { ReactNativeModal } from "react-native-modal";
+import { fetchAPI } from "@/lib/fetch";
 
 const SignUn = () => {
   const [form, setForm] = useState({
@@ -67,7 +68,15 @@ const SignUn = () => {
       });
 
       if (completeSignUp.status === "complete") {
-        // TODO: Create a database user!
+        await fetchAPI("/(api)/user", {
+          method: "POST",
+          body: JSON.stringify({
+            name: form.name,
+            email: form.email,
+            clerkId: completeSignUp.createdUserId,
+          }),
+        });
+
         await setActive({ session: completeSignUp.createdSessionId });
         // router.replace("/(root)/(auth)/home");
         setVerification({
@@ -115,13 +124,16 @@ const SignUn = () => {
             value={form.name}
             onChangeText={(value) => setForm({ ...form, name: value })}
           />
+
           <InputField
             label="Email"
             placeholder="Enter your email"
             icon={icons.email}
             value={form.email}
+            // secureTextEntry={false}
             onChangeText={(value) => setForm({ ...form, email: value })}
           />
+
           <InputField
             label="Password"
             placeholder="Enter password"
@@ -130,6 +142,7 @@ const SignUn = () => {
             value={form.password}
             onChangeText={(value) => setForm({ ...form, password: value })}
           />
+
           <CustomButton
             title="Sign Up"
             onPress={onSignUpPress}
