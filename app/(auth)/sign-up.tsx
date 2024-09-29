@@ -2,11 +2,10 @@ import {
   View,
   Text,
   Image,
-  Animated,
   Alert,
   TouchableOpacity,
+  ScrollView,
 } from "react-native";
-import ScrollView = Animated.ScrollView;
 import { icons, images } from "@/constans";
 import InputField from "@/components/InputField";
 import { useState } from "react";
@@ -153,6 +152,7 @@ const SignUn = () => {
             }}
           >
             <View className="bg-white px-7 py-9 rounded-2xl min-h-[300px]">
+              {/*Back to state:"default"*/}
               <View className="w-full ">
                 <TouchableOpacity
                   onPress={() =>
@@ -200,6 +200,7 @@ const SignUn = () => {
           {/*<ReactNativeModal isVisible={verification.state === "success"}>*/}
           <ReactNativeModal isVisible={showSuccessModal}>
             <View className="bg-white px-7 py-9 rounded-2xl min-h-[300px]">
+              {/*Back to state:"default"*/}
               <View className="w-full ">
                 <TouchableOpacity
                   onPress={() =>
@@ -229,7 +230,10 @@ const SignUn = () => {
               </Text>
               <CustomButton
                 title="Browse Home"
-                onPress={() => router.replace("/(root)/(tabs)/home")}
+                onPress={() => {
+                  setShowSuccessModal(false);
+                  router.push("/(root)/(tabs)/home");
+                }}
                 className="mt-5"
               />
             </View>

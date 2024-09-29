@@ -1,3 +1,6 @@
+npx expo start -c
+
+
 npm install react-native-swiper //for swiper
 
 npx expo install react-dom react-native-web @expo/metro-runtime

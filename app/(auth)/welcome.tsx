@@ -1,5 +1,5 @@
 import { SafeAreaView } from "react-native-safe-area-context";
-import { View, Text, TouchableOpacity, Image } from "react-native";
+import { View, Text, TouchableOpacity, Image, ScrollView } from "react-native";
 import { router } from "expo-router";
 import { useRef, useState } from "react";
 import Swiper from "react-native-swiper";
@@ -13,6 +13,7 @@ const Onboarding = () => {
 
   return (
     <SafeAreaView className="flex h-full items-center justify-between bg-white">
+      {/*<ScrollView>*/}
       <TouchableOpacity
         onPress={() => router.replace("/(auth)/sign-up")}
         className="w-full flex justify-end items-end p-8"
@@ -55,8 +56,12 @@ const Onboarding = () => {
             ? router.replace("/(auth)/sign-up")
             : swiperRef.current?.scrollBy(1)
         }
-        className="w-11/12 mt-10"
+        className="w-11/12 mt-10
+          {/*border-2*/}
+          {/*border-red-500*/}
+          "
       />
+      {/*</ScrollView>*/}
     </SafeAreaView>
   );
 };
