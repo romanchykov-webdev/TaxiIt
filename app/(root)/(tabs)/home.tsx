@@ -11,6 +11,7 @@ import { SafeAreaView } from "react-native-safe-area-context";
 import RideCard from "@/components/RideCard";
 import { images, icons } from "@/constans";
 import GoogleTextInput from "@/components/GoogleTextInput";
+import Map from "@/components/Map";
 
 const recentRides = [
   {
@@ -188,7 +189,7 @@ export default function Page() {
               >
                 <Image
                   source={icons.out}
-                  className="w-10 h-10 "
+                  className="w-6 h-6 "
                   resizeMode="contain"
                 />
               </TouchableOpacity>
@@ -199,6 +200,17 @@ export default function Page() {
               containerStyle="bg-white shadow-md shadow-neutral-300"
               handlePress={handleDestinationPress}
             />
+            <>
+              <Text className="text-xl font-JakartaBold mt-5 mb-3">
+                Your Current Location
+              </Text>
+              <View className="flex flex-row items-center bg-transparent h-[300px]">
+                <Map />
+              </View>
+            </>
+            <Text className="text-xl font-JakartaBold mt-5 mb-3">
+              Recent Rides
+            </Text>
           </>
         )}
       />

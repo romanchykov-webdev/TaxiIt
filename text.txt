@@ -14,3 +14,8 @@ npm install expo-local-authentication
 
 database
 npm install @neondatabase/serverless
+
+
+google apy key AIzaSyDBm6GEXFyqgtgzbHeI0ydPIF_JWKOWV8Y
+
+AIzaSyAgtM4jR5TQOJ7cYGV0aAr-sLqZSzLm5tA
