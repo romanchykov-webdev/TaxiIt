@@ -1,4 +1,5 @@
 import { SignedIn, useUser } from "@clerk/clerk-expo";
+import * as Location from "expo-location";
 import {
   Text,
   View,
@@ -12,6 +13,9 @@ import RideCard from "@/components/RideCard";
 import { images, icons } from "@/constans";
 import GoogleTextInput from "@/components/GoogleTextInput";
 import Map from "@/components/Map";
+import { useLocationStore } from "@/store";
+import { useEffect, useState } from "react";
+import { router } from "expo-router";
 
 const recentRides = [
   {
@@ -125,13 +129,52 @@ const recentRides = [
 ];
 
 export default function Page() {
+  // get geo point
+  const { setUserLocation, setDestinationLocation } = useLocationStore();
+  const [hasPermissions, setHasPermissions] = useState(false);
+  useEffect(() => {
+    const requestLocation = async () => {
+      // let { status } = await Location.requestForegroundPermissionAsync();
+      let { status } = await Location.requestForegroundPermissionsAsync();
+
+      if (status !== "granted") {
+        setHasPermissions(false);
+        return;
+      }
+
+      let location = await Location.getCurrentPositionAsync();
+
+      const address = await Location.reverseGeocodeAsync({
+        latitude: location.coords?.latitude!,
+        longitude: location.coords?.longitude!,
+      });
+
+      setUserLocation({
+        latitude: location.coords.latitude,
+        longitude: location.coords.longitude,
+        address: `${address[0].name}, ${address[0].region}`,
+      });
+    };
+
+    requestLocation();
+  }, []);
+  // get geo point end
+
   const { user } = useUser();
   const loading = false;
   // console.log("user", user);
 
   const handleSignOut = () => {};
 
-  const handleDestinationPress = () => {};
+  const handleDestinationPress = (location: {
+    latitude: number;
+    longitude: number;
+    address: string;
+  }) => {
+    setDestinationLocation(location);
+
+    router.push("/(root)/find-ride");
+  };
 
   return (
     <SafeAreaView className="bg-general-500 h-full">
