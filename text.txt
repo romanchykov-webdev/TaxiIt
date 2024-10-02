@@ -14,3 +14,20 @@ npm install expo-local-authentication
 
 database
 npm install @neondatabase/serverless
+
+
+google apy key AIzaSyDBm6GEXFyqgtgzbHeI0ydPIF_JWKOWV8Y
+
+AIzaSyAgtM4jR5TQOJ7cYGV0aAr-sLqZSzLm5tA
+
+npm install zustand   --библиотека для определения места положения
+npm install expo-location
+
+google auto complete places
+npm install react-native-google-places-autocomplete
+
+// wrapper for gests
+npm install react-native-gesture-handler
+
+//Эффективный интерактивный нижний лист с полностью настраиваемыми параметрами.
+npm install @gorhom/bottom-sheet
