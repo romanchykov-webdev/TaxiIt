@@ -31,3 +31,14 @@ npm install react-native-gesture-handler
 
 //Эффективный интерактивный нижний лист с полностью настраиваемыми параметрами.
 npm install @gorhom/bottom-sheet
+
+// stripe платежный сервис
+npm install stripe --save
+npm install @stripe/stripe-react-native
+
+
+// пакет для отрисовка маршрута
+npm install  react-native-maps-directions
+
+// google OAuth
+npm install expo-linking
