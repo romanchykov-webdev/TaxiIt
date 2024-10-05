@@ -7,7 +7,7 @@ import { useDriverStore } from "@/store";
 
 const ConfirmRide = () => {
   const { drivers, selectedDriver, setSelectedDriver } = useDriverStore();
-  console.log("selectedDriver", selectedDriver);
+  // console.log("selectedDriver", selectedDriver);
 
   return (
     <RideLayout title="Choose s Driver" snapPoints={["20%", "95%"]}>
