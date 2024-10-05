@@ -1,17 +1,19 @@
-import { View, Text, ScrollView, Image, TouchableOpacity } from "react-native";
+import { View, Text, Image, TouchableOpacity, ScrollView } from "react-native";
 import { ReactNode, useRef } from "react";
 import { GestureHandlerRootView } from "react-native-gesture-handler";
 import { router } from "expo-router";
 import { icons } from "@/constans";
 import Map from "./Map";
-import BottomSheet, { BottomSheetScrollView } from "@gorhom/bottom-sheet";
+import BottomSheet, { BottomSheetView } from "@gorhom/bottom-sheet";
 
 const RideLayout = ({
   title,
   children,
+  snapPoints,
 }: {
   title: string;
   children: ReactNode;
+  snapPoints: string;
 }) => {
   const bottomSheetRef = useRef(null);
 
@@ -45,10 +47,16 @@ const RideLayout = ({
           <Map />
         </View>
 
-        <BottomSheet ref={bottomSheetRef} snapPoints={["40%", "85%"]} index={0}>
-          <BottomSheetScrollView style={{ flex: 1, padding: 20 }}>
+        <BottomSheet
+          // keyboardBehavior="extend"
+          ref={bottomSheetRef}
+          snapPoints={snapPoints || ["20%", "85%"]}
+          // snapPoints={["20%", "85%"]}
+          index={0}
+        >
+          <BottomSheetView style={{ flex: 1, padding: 20 }}>
             {children}
-          </BottomSheetScrollView>
+          </BottomSheetView>
         </BottomSheet>
       </View>
     </GestureHandlerRootView>

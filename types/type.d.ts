@@ -13,7 +13,7 @@ declare interface Driver {
 declare interface MarkerData {
   latitude: number;
   longitude: number;
-  id: number;
+  id?: number;
   title: string;
   profile_image_url: string;
   car_image_url: string;
@@ -54,6 +54,7 @@ declare interface Ride {
 }
 
 declare interface ButtonProps extends TouchableOpacityProps {
+  disabled?: boolean;
   title: string;
   bgVariant?: "primary" | "secondary" | "danger" | "outline" | "success";
   textVariant?: "primary" | "default" | "secondary" | "danger" | "success";
