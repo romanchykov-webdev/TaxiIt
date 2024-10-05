@@ -7,7 +7,7 @@ import { useDriverStore } from "@/store";
 
 const ConfirmRide = () => {
   const { drivers, selectedDriver, setSelectedDriver } = useDriverStore();
-  console.log("selectedDriver", selectedDriver);
+  // console.log("selectedDriver", selectedDriver);
 
   return (
     <RideLayout title="Choose s Driver" snapPoints={["20%", "95%"]}>
@@ -15,8 +15,10 @@ const ConfirmRide = () => {
         data={drivers}
         renderItem={({ item }) => (
           <DriverCard
-            selected={selectedDriver}
-            setSelected={() => setSelectedDriver(Number(item.id)!)}
+            selected={selectedDriver === null ? 0 : selectedDriver}
+            setSelected={() => setSelectedDriver(item.id ? Number(item.id) : 0)} // Проверяем, что item.id не null
+            // setSelected={() => setSelectedDriver(Number(item.id ?? 0))} // Применение значения по умолчанию
+            // setSelected={() => setSelectedDriver(Number(item.id)!)}
             item={item}
             // key={item.id}
           />
@@ -25,7 +27,8 @@ const ConfirmRide = () => {
           <View className="mx-5 mt-10">
             <CustomButton
               title="Select Ride"
-              disabled={selectedDriver ? false : true}
+              disabled={selectedDriver === null} // Кнопка неактивна, если selectedDriver равен null
+              // disabled={selectedDriver === null ? false : true}
               onPress={() => router.push("/(root)/book-ride")}
             />
           </View>
