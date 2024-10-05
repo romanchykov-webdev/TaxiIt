@@ -77,7 +77,8 @@ export default function Page() {
   return (
     <SafeAreaView className="bg-general-500 h-full">
       <FlatList
-        data={recentRides?.slice(0, 5)}
+        // data={recentRides?.slice(0, 5)}
+        data={Array.isArray(recentRides) ? recentRides.slice(0, 5) : []}
         // data={[]}
         renderItem={({ item }) => <RideCard ride={item} />}
         className="px-5"
